@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<dialog>
+    <form id="userData">
+        <div class="player1Input">
+            <label for="player1Name">Player 1:</label>
+            <input type="text" id="player1Name" placeholder="Insert PLayer 1 name">
+        </div>
+
+        <div class="player2Input">
+            <label for="player1Name">Player 2:</label>
+            <input type="text" id="player1Name" placeholder="Insert PLayer 2 name">
+        </div>
+    </form>
+</dialog>
+    <div class="container">
+        <div class="gameboard">
+            <div class="row 0">
+                <div data-number="0"></div>
+                <div data-number="1"></div>
+                <div data-number="2"></div>
+            </div>
+            <div class="row 1">
+                <div data-number="0"></div>
+                <div data-number="1"></div>
+                <div data-number="2"></div>
+            </div>
+            <div class="row 2">
+                <div data-number="0"></div>
+                <div data-number="1"></div>
+                <div data-number="2"></div>
+            </div>
+        </div>
+        <div class="scoreboard">
+            <div>
+                <p class="firstPlayer">Player 1</p>
+                <p class="Score1">0</p>
+            </div>
+
+            <div>
+                <p> - </p>
+                <p class="ties"> 0</p>
+            </div>
+
+            <div>
+                <p class="secondPlayer">Player 2</p>
+                <p class="score2">0</p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
