@@ -27,6 +27,19 @@
     cursor: pointer;
 }
 
+.row div[data-number ="0"]{
+    border-left: none;
+}
+
+.row div[data-number ="2"]{
+    border-right: none;
+}
+[class="row 0"] > div {
+    border-top: none;
+}
+[class="row 2"] > div {
+    border-bottom: none;
+}
 .scoreboard {
     display: flex;
     gap:1.25rem;

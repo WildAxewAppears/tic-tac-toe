@@ -1,10 +1,14 @@
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("#userData");
+const score1 = document.querySelector("#score1");
+const score2 = document.querySelector("#score2");
+const tie = document.querySelector("#tie")
 
 dialog.showModal()
 
 let player1 
 let player2 
+let draw = 0
 
 function player (name,  marker, score) {
     return {name, marker, score}
@@ -62,7 +66,9 @@ document.querySelectorAll(".row div").forEach(div => {
                     div.textContent = player2.marker;
                     gameboard.grid[row][col] = 2;
                 }
-                gameboardStatus.round += 1; 
+                setTimeout(function(){
+                    checkWinners()
+                    gameboardStatus.round += 1;},10)
             } 
             else {
                 alert("Press a valid square");
@@ -80,4 +86,70 @@ function reset() {
     document.querySelectorAll(".row div").forEach(div => {
         div.textContent = " "
 })
+}
+
+function checkWinners () {
+    for (let i = 0; i < 3; i++){
+        if(gameboard.grid[0][i]!==0 && gameboard.grid[0][i]==gameboard.grid[1][i] && gameboard.grid[0][i]==gameboard.grid[2][i]){
+            if(gameboardStatus.round % 2 === 1){
+                alert(`${player1.name} won`)
+                player1.score += 1
+                score1.textContent = player1.score
+            }
+            else if (gameboardStatus.round % 2 === 0){
+                alert(`${player2.name} won`)
+                player2.score += 1
+                score2.textContent = player2.score
+            }
+            gameboardStatus.gameinprogress = false
+        }
+        else if(gameboard.grid[i][0]!==0 && gameboard.grid[i][0]==gameboard.grid[i][1] && gameboard.grid[i][0]==gameboard.grid[i][2]){
+            if(gameboardStatus.round % 2 === 1){
+                alert(`${player1.name} won`)
+                player1.score += 1
+                score1.textContent = player1.score
+            }
+            else if (gameboardStatus.round % 2 === 0){
+                alert(`${player2.name} won`)
+                player2.score += 1
+                score2.textContent = player2.score
+            }
+            gameboardStatus.gameinprogress = false
+        }
+    }
+    if(gameboard.grid[0][2] !==0 && gameboard.grid[0][2]==gameboard.grid[1][1] && gameboard.grid[0][2]==gameboard.grid[2][0]){
+        if(gameboardStatus.round % 2 === 1){
+            alert(`${player1.name} won`)
+            player1.score += 1
+            score1.textContent = player1.score
+        }
+        else if (gameboardStatus.round % 2 === 0){
+            alert(`${player2.name} won`)
+            player2.score += 1
+            score2.textContent = player2.score
+        }
+        gameboardStatus.gameinprogress = false
+    }
+    else if(gameboard.grid[0][0] !==0 && gameboard.grid[0][0]==gameboard.grid[1][1] && gameboard.grid[0][0]==gameboard.grid[2][2]){
+        if(gameboardStatus.round % 2 === 1){
+            alert(`${player1.name} won`)
+            player1.score += 1
+            score1.textContent = player1.score
+        }
+        else if (gameboardStatus.round % 2 === 0){
+            alert(`${player2.name} won`)
+            player2.score += 1
+            score2.textContent = player2.score
+        }
+        gameboardStatus.gameinprogress = false
+    }
+    else {
+        const allFilled = gameboard.grid.flat().every(cell => cell !== 0);
+        if (allFilled) {
+            alert("It's a draw!");
+            gameboardStatus.gameinprogress = false;
+            draw +=1
+            tie.textContent = draw
+        }
+    }
 }
