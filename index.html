@@ -7,19 +7,6 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<dialog>
-    <form id="userData">
-        <div class="player1Input">
-            <label for="player1Name">Player 1:</label>
-            <input type="text" id="player1Name" placeholder="Insert PLayer 1 name">
-        </div>
-
-        <div class="player2Input">
-            <label for="player1Name">Player 2:</label>
-            <input type="text" id="player1Name" placeholder="Insert PLayer 2 name">
-        </div>
-    </form>
-</dialog>
     <div class="container">
         <div class="gameboard">
             <div class="row 0">
@@ -40,21 +27,39 @@
         </div>
         <div class="scoreboard">
             <div>
-                <p class="firstPlayer">Player 1</p>
-                <p class="Score1">0</p>
+                <p id="firstPlayer">Player 1</p>
+                <p id="Score1">0</p>
             </div>
 
             <div>
                 <p> - </p>
-                <p class="ties"> 0</p>
+                <p id="tie"> 0</p>
             </div>
 
             <div>
-                <p class="secondPlayer">Player 2</p>
-                <p class="score2">0</p>
+                <p id="secondPlayer">Player 2</p>
+                <p id="score2">0</p>
             </div>
         </div>
     </div>
+    <dialog>
+        <form id="userData">
+            <div class="player1Input">
+                <label for="player1Name">Player 1:</label>
+                <input type="text" id="player1Name" placeholder="Insert PLayer 1 name">
+            </div>
     
+            <div class="player2Input">
+                <label for="player2Name">Player 2:</label>
+                <input type="text" id="player2Name" placeholder="Insert PLayer 2 name">
+            </div>
+
+            <div>
+                <button type="submit">letsgoski</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="./js-file.js"></script>
 </body>
 </html>
