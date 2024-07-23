@@ -26,8 +26,8 @@ form.addEventListener("submit", function(event){
     const player1Paragraph = document.querySelector("#firstPlayer");
     const player2Paragraph = document.querySelector("#secondPlayer");
 
-    player1Paragraph.textContent = player1.name
-    player2Paragraph.textContent = player2.name
+    player1Paragraph.textContent = player1.name + " (x)"
+    player2Paragraph.textContent = player2.name + " (o)"
 
 
     dialog.close();
@@ -95,26 +95,32 @@ function checkWinners () {
                 alert(`${player1.name} won`)
                 player1.score += 1
                 score1.textContent = player1.score
+                
             }
             else if (gameboardStatus.round % 2 === 0){
                 alert(`${player2.name} won`)
                 player2.score += 1
                 score2.textContent = player2.score
+                
             }
             gameboardStatus.gameinprogress = false
+            return
         }
         else if(gameboard.grid[i][0]!==0 && gameboard.grid[i][0]==gameboard.grid[i][1] && gameboard.grid[i][0]==gameboard.grid[i][2]){
             if(gameboardStatus.round % 2 === 1){
                 alert(`${player1.name} won`)
                 player1.score += 1
                 score1.textContent = player1.score
+                
             }
             else if (gameboardStatus.round % 2 === 0){
                 alert(`${player2.name} won`)
                 player2.score += 1
                 score2.textContent = player2.score
+                
             }
             gameboardStatus.gameinprogress = false
+            return
         }
     }
     if(gameboard.grid[0][2] !==0 && gameboard.grid[0][2]==gameboard.grid[1][1] && gameboard.grid[0][2]==gameboard.grid[2][0]){
@@ -128,7 +134,9 @@ function checkWinners () {
             player2.score += 1
             score2.textContent = player2.score
         }
+        
         gameboardStatus.gameinprogress = false
+        return
     }
     else if(gameboard.grid[0][0] !==0 && gameboard.grid[0][0]==gameboard.grid[1][1] && gameboard.grid[0][0]==gameboard.grid[2][2]){
         if(gameboardStatus.round % 2 === 1){
@@ -142,6 +150,7 @@ function checkWinners () {
             score2.textContent = player2.score
         }
         gameboardStatus.gameinprogress = false
+        return
     }
     else {
         const allFilled = gameboard.grid.flat().every(cell => cell !== 0);
